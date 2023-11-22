@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <windows.h>
+#include <time.h>
 
 struct Student
 {
@@ -12,6 +13,13 @@ struct Student
 
 void printMenu()
 {
+    time_t now;
+
+    time(&now);
+
+    printf("\n");
+
+    printf("\t\t\t\t\t\t       %s", ctime(&now)); // current time and date will be appear at the top
     printf("\n\t\t\t\t\t******** Student Accommodation System ********\n");
     printf("1. Add Student\n");
     printf("2. Delete Student\n");
