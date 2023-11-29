@@ -113,29 +113,41 @@ void queryStudent(struct Student students[], int numStudents)
 
     printf("Enter name of student to query: ");
     scanf("%s", name);
+    printf("\n\n");
+
+    int found = 0;
 
     for (int i = 0; i < numStudents; i++)
     {
         if (strcmp(students[i].name, name) == 0)
         {
-            printf("Name: %s\n", students[i].name);
-            printf("Dorm: %s\n", students[i].dorm);
-            printf("Class: %s\n", students[i].class);
+
+            found = 1;
+
+            // Print headers
+            printf("%-15s%-10s%-10s%s\n", "Name", "Dorm", "Class", "Status");
+
+            // Print divider
+            printf("%-15s%-10s%-10s%s\n", "---------------", "----------", "----------", "----------");
+
+            // Print student details
+            printf("%-15s%-10s%-10s", students[i].name, students[i].dorm, students[i].class);
 
             if (students[i].on_leave)
             {
-                printf("On Leave\n");
+                printf("%s\n", "On Leave");
             }
             else
             {
-                printf("On Campus\n");
+                printf("%s\n", "On Campus");
             }
-
-            return;
         }
     }
 
-    printf("Student with name %s not found!\n", name);
+    if (!found)
+    {
+        printf("Student with name %s not found!\n", name);
+    }
 }
 
 void printStudents(struct Student students[], int numStudents)
@@ -170,18 +182,22 @@ void printStudents(struct Student students[], int numStudents)
 void printOnLeave(struct Student students[], int numStudents)
 {
 
-    printf("Students On Leave\n");
+     printf("Students On Leave\n");
+  
+  printf("%-15s%-10s%-10s\n", "Name", "Dorm", "Class");
+  
+  printf("%-15s%-10s%-10s\n", "---------------", "----------", "----------");
 
-    for (int i = 0; i < numStudents; i++)
-    {
-        if (students[i].on_leave)
-        {
-            printf("Name: %s\n", students[i].name);
-            printf("Dorm: %s\n", students[i].dorm);
-            printf("Class: %s\n", students[i].class);
-            printf("On Leave\n\n");
-        }
+  for(int i=0; i<numStudents; i++){
+
+    if(students[i].on_leave) {
+        
+      printf("%-15s%-10s%-10s\n",  
+        students[i].name, students[i].dorm, students[i].class);
+    
     }
+
+  }
 }
 void saveToFile(struct Student studs[], int count);
 
