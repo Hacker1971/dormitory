@@ -143,19 +143,26 @@ void printStudents(struct Student students[], int numStudents)
 
     printf("All Students\n");
 
-    for (int i = 0; i < numStudents; i++)
+    printf("%-5s%-15s%-10s%-10s%s\n", "No.", "Name", "Dorm", "Class", "Status");
+
+    printf("%-5s%-15s%-10s%-10s%s\n", "-------", "---------------", "----------", "----------", "----------");
+
+    int i;
+    for (i = 0; i < numStudents; i++)
     {
-        printf("Name: %s\n", students[i].name);
-        printf("Dorm: %s\n", students[i].dorm);
-        printf("Class: %s\n", students[i].class);
+
+        printf("%-5d", i + 1);
+        printf("%-15s", students[i].name);
+        printf("%-10s", students[i].dorm);
+        printf("%-10s", students[i].class);
 
         if (students[i].on_leave)
         {
-            printf("On Leave\n\n");
+            printf("%s\n", "On Leave");
         }
         else
         {
-            printf("On Campus\n\n");
+            printf("%s\n", "On Campus");
         }
     }
 }
