@@ -20,14 +20,19 @@ void printMenu()
     printf("\n");
 
     printf("\t\t\t\t\t\t       %s", ctime(&now)); // current time and date will be appear at the top
-    printf("\n\t\t\t\t\t******** Student Accommodation System ********\n");
-    printf("1. Add Student\n");
-    printf("2. Delete Student\n");
-    printf("3. Modify Student\n");
-    printf("4. Query Student\n");
-    printf("5. Print All Students\n");
-    printf("6. Print Students On Leave\n");
-    printf("7. Exit\n\n");
+                                                  // Print header
+    printf("\t\t\t\t\t ______________________________________________\n");
+    printf("\t\t\t\t\t|                                              |\n");
+    printf("\t\t\t\t\t|   ***** Student Accommodation System *****   |\n");
+    printf("\t\t\t\t\t|______________________________________________|\n\n");
+    printf(">>Menu\n\n");
+    printf("[1]. Add Student\n");
+    printf("[2]. Delete Student\n");
+    printf("[3]. Modify Student\n");
+    printf("[4]. Query Student\n");
+    printf("[5]. Print All Students\n");
+    printf("[6]. Print Students On Leave\n");
+    printf("[7]. Exit\n\n");
 
     printf("Enter your choice: ");
 }
@@ -36,6 +41,7 @@ void addStudent(struct Student students[], int *numStudents)
 {
 
     struct Student s;
+    printf("\t\t\t\n-- Add Students --\n");
 
     printf("Enter new student name: ");
     scanf("%s", s.name);
@@ -56,7 +62,7 @@ void deleteStudent(struct Student students[], int *numStudents)
 {
 
     char name[100];
-
+    printf("-- Delete Student --\n");
     printf("Enter name of student to delete: ");
     scanf("%s", name);
 
@@ -81,7 +87,7 @@ void modifyStudent(struct Student students[], int numStudents)
 {
 
     char name[100];
-
+    printf("-- Modify Student --\n");
     printf("Enter name of student to modify: ");
     scanf("%s", name);
 
@@ -110,7 +116,7 @@ void queryStudent(struct Student students[], int numStudents)
 {
 
     char name[100];
-
+    printf("-- Query Student --\n");
     printf("Enter name of student to query: ");
     scanf("%s", name);
     printf("\n\n");
@@ -182,27 +188,28 @@ void printStudents(struct Student students[], int numStudents)
 void printOnLeave(struct Student students[], int numStudents)
 {
 
-     printf("Students On Leave\n");
-  
-  printf("%-15s%-10s%-10s\n", "Name", "Dorm", "Class");
-  
-  printf("%-15s%-10s%-10s\n", "---------------", "----------", "----------");
+    printf("Students On Leave\n");
 
-  for(int i=0; i<numStudents; i++){
+    printf("%-15s%-10s%-10s\n", "Name", "Dorm", "Class");
 
-    if(students[i].on_leave) {
-        
-      printf("%-15s%-10s%-10s\n",  
-        students[i].name, students[i].dorm, students[i].class);
-    
+    printf("%-15s%-10s%-10s\n", "---------------", "----------", "----------");
+
+    for (int i = 0; i < numStudents; i++)
+    {
+
+        if (students[i].on_leave)
+        {
+
+            printf("%-15s%-10s%-10s\n",
+                   students[i].name, students[i].dorm, students[i].class);
+        }
     }
-
-  }
 }
 void saveToFile(struct Student studs[], int count);
 
 int main()
 {
+    system("cls");
     system("color 0b");
     struct Student students[100];
     int numStudents = 0;
